@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router";
+import { useParams, Link } from "react-router";
 import { Card, CardContent } from "../components/ui/card";
 // import { Badge } from "../components/ui/badge";
 import Button from "../components/ui/button";
@@ -152,7 +152,7 @@ const newsArticles = {
 
 export function NewsDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const article = slug ? newsArticles[slug as keyof typeof newsArticles] : null;
 

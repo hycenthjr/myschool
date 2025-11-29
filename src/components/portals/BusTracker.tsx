@@ -1,8 +1,15 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Bus, MapPin, Clock, Phone, AlertCircle, Navigation } from 'lucide-react';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import Badge from "../ui/badge";
+import Button from "../ui/button";
+import {
+  Bus,
+  MapPin,
+  Clock,
+  Phone,
+  AlertCircle,
+  Navigation,
+} from "lucide-react";
 
 interface BusRoute {
   id: string;
@@ -10,7 +17,7 @@ interface BusRoute {
   busNumber: string;
   driver: string;
   driverPhone: string;
-  status: 'on-time' | 'delayed' | 'arrived' | 'departing';
+  status: "on-time" | "delayed" | "arrived" | "departing";
   currentLocation: string;
   nextStop: string;
   eta: string;
@@ -21,42 +28,45 @@ interface BusRoute {
 interface Stop {
   name: string;
   time: string;
-  status: 'completed' | 'current' | 'upcoming';
+  status: "completed" | "current" | "upcoming";
 }
 
 export function BusTracker({ routeId }: { routeId?: string }) {
-  const [selectedRoute, setSelectedRoute] = useState<BusRoute>({
-    id: 'route-3',
-    routeName: 'Route 3 - Lekki',
-    busNumber: 'AGS-BUS-03',
-    driver: 'Mr. Oladipo',
-    driverPhone: '+234 801 234 5678',
-    status: 'on-time',
-    currentLocation: 'Approaching Chevron Stop',
-    nextStop: 'Chevron Roundabout',
-    eta: '8 minutes',
+  
+  console.log("Selected Route ID:", routeId);
+
+  const [selectedRoute] = useState<BusRoute>({
+    id: "route-3",
+    routeName: "Route 3 - Lekki",
+    busNumber: "AGS-BUS-03",
+    driver: "Mr. Oladipo",
+    driverPhone: "+234 801 234 5678",
+    status: "on-time",
+    currentLocation: "Approaching Chevron Stop",
+    nextStop: "Chevron Roundabout",
+    eta: "8 minutes",
     students: 24,
     stops: [
-      { name: 'School Campus', time: '3:30 PM', status: 'completed' },
-      { name: 'Admiralty Way', time: '3:45 PM', status: 'completed' },
-      { name: 'Chevron Roundabout', time: '4:00 PM', status: 'current' },
-      { name: 'VGC Gate', time: '4:15 PM', status: 'upcoming' },
-      { name: 'Ajah Junction', time: '4:30 PM', status: 'upcoming' },
-    ]
+      { name: "School Campus", time: "3:30 PM", status: "completed" },
+      { name: "Admiralty Way", time: "3:45 PM", status: "completed" },
+      { name: "Chevron Roundabout", time: "4:00 PM", status: "current" },
+      { name: "VGC Gate", time: "4:15 PM", status: "upcoming" },
+      { name: "Ajah Junction", time: "4:30 PM", status: "upcoming" },
+    ],
   });
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'on-time':
-        return 'bg-green-100 text-green-700';
-      case 'delayed':
-        return 'bg-orange-100 text-orange-700';
-      case 'arrived':
-        return 'bg-blue-100 text-blue-700';
-      case 'departing':
-        return 'bg-purple-100 text-purple-700';
+      case "on-time":
+        return "bg-green-100 text-green-700";
+      case "delayed":
+        return "bg-orange-100 text-orange-700";
+      case "arrived":
+        return "bg-blue-100 text-blue-700";
+      case "departing":
+        return "bg-purple-100 text-purple-700";
       default:
-        return 'bg-gray-100 text-gray-700';
+        return "bg-gray-100 text-gray-700";
     }
   };
 

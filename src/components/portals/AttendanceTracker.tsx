@@ -31,6 +31,9 @@ interface AttendanceStats {
 }
 
 export function AttendanceTracker({ studentName }: { studentName?: string }) {
+
+  console.log("Selected Student:", studentName);
+  
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
   const stats: AttendanceStats = {

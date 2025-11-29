@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Progress } from '../ui/progress';
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import Badge from "../ui/badge";
+import Button from "../ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Progress } from "../ui/progress";
 import {
   BookOpen,
   TrendingUp,
@@ -10,8 +10,8 @@ import {
   Download,
   Eye,
   Award,
-  Target
-} from 'lucide-react';
+  Target,
+} from "lucide-react";
 import {
   LineChart,
   Line,
@@ -22,109 +22,114 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
-} from 'recharts';
+  ResponsiveContainer,
+} from "recharts";
 
 interface Subject {
   name: string;
   teacher: string;
   currentGrade: number;
   previousGrade: number;
-  trend: 'up' | 'down' | 'stable';
+  trend: "up" | "down" | "stable";
   assignments: number;
   tests: number;
 }
 
 export function GradesReports({ studentName }: { studentName?: string }) {
+
+  console.log("Selected Student:", studentName);
+
   const subjects: Subject[] = [
     {
-      name: 'Mathematics',
-      teacher: 'Mr. Adebayo',
+      name: "Mathematics",
+      teacher: "Mr. Adebayo",
       currentGrade: 87,
       previousGrade: 82,
-      trend: 'up',
+      trend: "up",
       assignments: 5,
-      tests: 3
+      tests: 3,
     },
     {
-      name: 'Physics',
-      teacher: 'Dr. Okonkwo',
+      name: "Physics",
+      teacher: "Dr. Okonkwo",
       currentGrade: 92,
       previousGrade: 90,
-      trend: 'up',
+      trend: "up",
       assignments: 4,
-      tests: 2
+      tests: 2,
     },
     {
-      name: 'Chemistry',
-      teacher: 'Mrs. Ibrahim',
+      name: "Chemistry",
+      teacher: "Mrs. Ibrahim",
       currentGrade: 85,
       previousGrade: 88,
-      trend: 'down',
+      trend: "down",
       assignments: 6,
-      tests: 3
+      tests: 3,
     },
     {
-      name: 'English Literature',
-      teacher: 'Ms. Williams',
+      name: "English Literature",
+      teacher: "Ms. Williams",
       currentGrade: 90,
       previousGrade: 90,
-      trend: 'stable',
+      trend: "stable",
       assignments: 4,
-      tests: 2
+      tests: 2,
     },
     {
-      name: 'Biology',
-      teacher: 'Dr. Eze',
+      name: "Biology",
+      teacher: "Dr. Eze",
       currentGrade: 88,
       previousGrade: 85,
-      trend: 'up',
+      trend: "up",
       assignments: 5,
-      tests: 3
+      tests: 3,
     },
     {
-      name: 'Computer Science',
-      teacher: 'Mr. Okafor',
+      name: "Computer Science",
+      teacher: "Mr. Okafor",
       currentGrade: 95,
       previousGrade: 93,
-      trend: 'up',
+      trend: "up",
       assignments: 3,
-      tests: 2
-    }
+      tests: 2,
+    },
   ];
 
   const termProgress = [
-    { month: 'Sep', gpa: 3.5 },
-    { month: 'Oct', gpa: 3.6 },
-    { month: 'Nov', gpa: 3.7 }
+    { month: "Sep", gpa: 3.5 },
+    { month: "Oct", gpa: 3.6 },
+    { month: "Nov", gpa: 3.7 },
   ];
 
   const gradeDistribution = [
-    { grade: 'A (90-100)', count: 3 },
-    { grade: 'B (80-89)', count: 3 },
-    { grade: 'C (70-79)', count: 0 },
-    { grade: 'D (60-69)', count: 0 },
-    { grade: 'F (<60)', count: 0 }
+    { grade: "A (90-100)", count: 3 },
+    { grade: "B (80-89)", count: 3 },
+    { grade: "C (70-79)", count: 0 },
+    { grade: "D (60-69)", count: 0 },
+    { grade: "F (<60)", count: 0 },
   ];
 
   const overallStats = {
     gpa: 3.7,
     rank: 4,
     totalStudents: 45,
-    honors: true
+    honors: true,
   };
 
   const getTrendIcon = (trend: string) => {
-    if (trend === 'up') return <TrendingUp className="h-4 w-4 text-green-600" />;
-    if (trend === 'down') return <TrendingDown className="h-4 w-4 text-red-600" />;
+    if (trend === "up")
+      return <TrendingUp className="h-4 w-4 text-green-600" />;
+    if (trend === "down")
+      return <TrendingDown className="h-4 w-4 text-red-600" />;
     return <div className="h-4 w-4" />;
   };
 
   const getGradeColor = (grade: number) => {
-    if (grade >= 90) return 'text-green-600';
-    if (grade >= 80) return 'text-blue-600';
-    if (grade >= 70) return 'text-yellow-600';
-    return 'text-red-600';
+    if (grade >= 90) return "text-green-600";
+    if (grade >= 80) return "text-blue-600";
+    if (grade >= 70) return "text-yellow-600";
+    return "text-red-600";
   };
 
   return (

@@ -37,7 +37,9 @@ interface SportProfile {
   teamName: string;
 }
 
-export function SportsAnalytics({ studentName }: { studentName?: string }) {
+export function SportsAnalytics(
+  // { studentName }: { studentName?: string }
+) {
   const profile: SportProfile = {
     sport: 'Football',
     position: 'Midfielder',

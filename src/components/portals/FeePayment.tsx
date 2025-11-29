@@ -34,7 +34,7 @@ interface PaymentHistory {
 
 export function FeePayment({ studentName }: { studentName?: string }) {
   const [paymentMethod, setPaymentMethod] = useState('card');
-  const [selectedFees, setSelectedFees] = useState<string[]>([]);
+  // const [selectedFees, setSelectedFees] = useState<string[]>([]);
 
   const feeBreakdown: FeeItem[] = [
     {

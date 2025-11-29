@@ -33,7 +33,7 @@ import {
 export function TransportPortal() {
   const { signOut } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab] = useState("overview");
 
   const handleSignOut = async () => {
     await signOut();

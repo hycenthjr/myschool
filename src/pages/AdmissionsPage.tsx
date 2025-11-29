@@ -329,7 +329,9 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (
+    // data: any
+  ) => {
     alert(
       "Thank you! Your application has been submitted. Our admissions team will contact you within 48 hours."
     );
