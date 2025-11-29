@@ -1,5 +1,5 @@
 import "./Layout.css";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 // import Footer from "../components/Footer";
 
 const ShopLayout = () => {
@@ -7,6 +7,7 @@ const ShopLayout = () => {
     <div className="layout">
       {/* <Navbar /> */}
       <main className="w-full">
+        <ScrollRestoration />
         <Outlet />
       </main>
       {/* <Footer /> */}

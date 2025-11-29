@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import { Link, NavLink } from "react-router";
 import {
   LogIn,
@@ -18,7 +18,9 @@ import {
 import Logo from "./Logo";
 import Button from "./ui/button";
 
-const Navbar: React.FC = () => {
+const Navbar = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ ...props }, ref) => {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [portalOpen, setPortalOpen] = useState(false);
   const [mobilePortalTab, setMobilePortalTab] = useState(false);
@@ -46,9 +48,50 @@ const Navbar: React.FC = () => {
     { icon: ShoppingCart, label: "Vendor", path: "/portal/vendor/login" },
   ];
 
+  const [showNavbar, setShowNavbar] = React.useState(true);
+  const [lastScrollY, setLastScrollY] = React.useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Hide navbar when scrolling down
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  React.useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+
 
   return (
-    <nav className="sticky top-0 left-0 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 z-50">
+    // <nav className="sticky top-0 left-0 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 z-50">
+    <nav
+     ref={ref}
+  {...props}
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 
+  ${showNavbar ? "translate-y-0" : "-translate-y-full"} 
+  bg-white shadow-sm`}
+    >
       <div className="flex items-center justify-between px-5 py-3 md:px-8 md:py-6">
         {/* Logo */}
         <Logo />
@@ -128,6 +171,16 @@ const Navbar: React.FC = () => {
         {/* Tablet & Mobile */}
         <div className="flex lg:hidden items-center gap-3">
           <div className="hidden md:flex items-center gap-3">
+            <Link to="/shop">
+              <Button
+                text="Shop"
+                icon={<ShoppingCart size={16} />}
+                iconPosition="left"
+                className="cursor-pointer"
+                variant="outline"
+              />
+            </Link>
+
             <Link
               to="/contact"
               className="flex items-center rounded-md px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 transition cursor-pointer"
@@ -181,9 +234,10 @@ const Navbar: React.FC = () => {
 
       {/* Drawer Menu */}
       <div
-        className={`!fixed top-0 right-0 h-screen bg-white shadow-lg transition-all duration-300 ease-in-out z-50 ${
-          menuOpen ? "translate-x-0 w-72" : "translate-x-full w-0"
-        }`}
+        className={`!fixed top-0 right-0 h-[100dvh] overflow-hidden bg-white shadow-lg transition-all duration-300 ease-in-out z-50
+    ${menuOpen ? "translate-x-0" : "translate-x-full"}
+    w-72 md:w-1/2
+  `}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-4">
@@ -197,7 +251,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Drawer Content */}
-        <div className="p-4 overflow-y-auto bg-white">
+        <div className="px-4 overflow-y bg-white z-50">
           {/* Normal nav links (hidden when portal tab is open) */}
           {!mobilePortalTab && (
             <>
@@ -222,6 +276,14 @@ const Navbar: React.FC = () => {
 
               {/* Contact and Portal buttons */}
               <div className="mt-5 flex flex-col gap-3">
+                <Link
+                  to="/shop"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 border border-blue-500 rounded-md py-2 text-sm text-blue-500 hover:bg-gray-100 transition cursor-pointer"
+                >
+                  <ShoppingCart size={16} /> Shop
+                </Link>
+
                 <Link
                   to="/contact"
                   onClick={() => setMenuOpen(false)}
@@ -275,11 +337,11 @@ const Navbar: React.FC = () => {
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 bg-black/30 z-30"
+          className="fixed h-screen inset-0 bg-black/30 z-40"
         ></div>
       )}
     </nav>
   );
-};
+});
 
 export default Navbar;

@@ -14,7 +14,6 @@ import { AlumniPage } from "../pages/AlumniPage";
 import { SustainabilityPage } from "../pages/SustainabilityPage";
 import { ContactPage } from "../pages/ContactPage";
 import { DiagnosticsPage } from "../pages/DiagnosticsPage";
-// import { PortalLogin } from "../components/PortalLogin";
 
 const publicRoutes = (
   <Route path="/" element={<PublicLayout />}>
@@ -32,7 +31,6 @@ const publicRoutes = (
     <Route path="sustainability" element={<SustainabilityPage />} />
     <Route path="contact" element={<ContactPage />} />
     <Route path="diagnostics" element={<DiagnosticsPage />} />
-    {/* <Route path="portal/:portalType/login" element={<PortalLogin />} /> */}
   </Route>
 );
 
