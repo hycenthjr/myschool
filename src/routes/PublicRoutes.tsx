@@ -14,10 +14,11 @@ import { AlumniPage } from "../pages/AlumniPage";
 import { SustainabilityPage } from "../pages/SustainabilityPage";
 import { ContactPage } from "../pages/ContactPage";
 import { DiagnosticsPage } from "../pages/DiagnosticsPage";
+import { DonatePage } from "../pages/DonatePage";
 
 const publicRoutes = (
   <Route path="/" element={<PublicLayout />}>
-    <Route index element= {<HomePage />} />
+    <Route index element={<HomePage />} />
     <Route path="about" element={<AboutPage />} />
     <Route path="academics" element={<AcademicsPage />} />
     <Route path="sports" element={<SportsPage />} />
@@ -31,6 +32,7 @@ const publicRoutes = (
     <Route path="sustainability" element={<SustainabilityPage />} />
     <Route path="contact" element={<ContactPage />} />
     <Route path="diagnostics" element={<DiagnosticsPage />} />
+    <Route path="donate" element={<DonatePage />} />
   </Route>
 );
 

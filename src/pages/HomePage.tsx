@@ -13,6 +13,7 @@ import {
   Palette,
   Wrench,
   ChevronRight,
+  Heart,
 } from "lucide-react";
 import Button from "../components/ui/button";
 
@@ -150,6 +151,16 @@ export function HomePage() {
                   icon={<ArrowRight size={16} />}
                   iconPosition="right"
                   className="bg-white border-white text-blue-900 cursor-pointer"
+                  variant="outline"
+                />
+              </Link>
+              <Link to="/donate">
+                <Button
+                  text="Donate"
+                  icon={<Heart size={16} />}
+                  iconPosition="left"
+                  className="bg-transparent border-white text-white cursor-pointer hover:bg-white/10"
+                  textColor="white"
                   variant="outline"
                 />
               </Link>
