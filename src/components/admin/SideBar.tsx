@@ -53,7 +53,7 @@ const SideBar = () => {
     }`;
 
   return (
-    <div className="mt-0 md:mt-[64px] h-full w-[17rem] px-4 pt-[3%] md:pt-[20%] border-r border-gray-200 min-h-[calc(100vh-64px)] bg-white ">
+    <div className="mt-0 md:mt-[64px] h-full w-[17rem] px-4 pt-[3%] md:pt-[14%] border-r border-gray-200 min-h-[calc(100vh-64px)] bg-white ">
       <div className="pb-8 pt-1 md:hidden">
         <Logo />
       </div>

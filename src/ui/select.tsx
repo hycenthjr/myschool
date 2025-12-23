@@ -7,10 +7,12 @@ import React from "react";
 export function Select({
   children,
   value,
+  className = "",
   onValueChange,
 }: {
   children: React.ReactNode;
   value?: string;
+  className: string;
   onValueChange?: (value: string) => void;
 }) {
   const [open, setOpen] = React.useState(false);
@@ -45,7 +47,7 @@ export function Select({
     return child;
   });
 
-  return <div className="relative">{enhanced}</div>;
+  return <div className={`relative text-blue bg-gray-100 ${className}`}>{enhanced}</div>;
 }
 
 // ===============================
@@ -58,7 +60,7 @@ export function SelectValue({
   placeholder?: string;
   value?: string;
 }) {
-  return <span>{value || placeholder}</span>;
+  return <span className="text-black">{value || placeholder}</span>;
 }
 
 // ===============================
@@ -78,7 +80,7 @@ export function SelectTrigger({
   return (
     <button
       onClick={() => setOpen && setOpen(!open)}
-      className={`flex w-full items-center justify-between gap-2 rounded-md border bg-white px-3 py-2 text-sm ${className}`}
+      className={`flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-black text-sm ${className}`}
     >
       {children}
       <ChevronDownIcon className="w-4 h-4 opacity-60" />
@@ -125,7 +127,7 @@ export function SelectContent({
 
   return (
     <div
-      className={`absolute left-0 right-0 mt-1 rounded-md border bg-white shadow-md max-h-60 overflow-y-auto z-50 ${className}`}
+      className={`absolute left-0 right-0 mt-1 rounded-md border bg-white shadow-md max-h-60 overflow-y-auto z-50 text-black ${className}`}
     >
       {enhanced}
     </div>

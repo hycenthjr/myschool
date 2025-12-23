@@ -3,9 +3,15 @@
 import * as React from "react";
 
 interface SwitchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {}
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"| "checked" | "onChange" > {
+    checked : boolean;
+    onChange: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  }
 
-function Switch({ className, checked, onChange, ...props }: SwitchProps) {
+const Switch = React.forwardRef<HTMLInputElement, SwitchProps > (
+  ({ className, checked, onChange, ...props }, ref) => {
+
+
   const base =
     "peer relative inline-flex h-[1.15rem] w-8 shrink-0 cursor-pointer items-center rounded-full border border-transparent transition-all outline-none disabled:cursor-not-allowed disabled:opacity-50";
 
@@ -17,8 +23,8 @@ function Switch({ className, checked, onChange, ...props }: SwitchProps) {
       className={merged}
       style={{
         backgroundColor: checked
-          ? "var(--primary)"
-          : "var(--switch-background)",
+          ? "black"
+          : "gray",
         position: "relative",
       }}
     >
@@ -29,13 +35,14 @@ function Switch({ className, checked, onChange, ...props }: SwitchProps) {
         "
         style={{
           backgroundColor: checked
-            ? "var(--primary-foreground)"
-            : "var(--card)",
+            ? "white"
+            : "white",
           transform: checked ? "translateX(calc(100% - 2px))" : "translateX(0)",
         }}
       />
 
       <input
+        ref={ref}
         type="checkbox"
         checked={checked}
         onChange={onChange}
@@ -45,5 +52,5 @@ function Switch({ className, checked, onChange, ...props }: SwitchProps) {
     </label>
   );
 }
-
-export { Switch };
+);
+export default Switch;

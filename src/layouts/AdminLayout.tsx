@@ -21,12 +21,15 @@ const Layout = () => {
       <main className="w-[100%] flex">
         {/* Sidebar: hidden on small screens, toggled with menu */}
         <div>
-          <div className={`hidden lg:block`} style={{ width: "17rem" }}>
+          <div
+            className={`hidden fixed top-0 left-0 h-full lg:block`}
+            style={{ width: "17rem" }}
+          >
             <SideBar />
           </div>
           {/* Mobile & md sidebar */}
           <div
-            className={`fixed top-0 left-0 z-50 h-full bg-white transition-transform duration-300 lg:hidden ${
+            className={`fixed top-0 left-0 z-50 h-full  bg-white transition-transform duration-300 lg:hidden ${
               sidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             style={{ width: "17rem" }}
@@ -44,7 +47,7 @@ const Layout = () => {
 
         {/* Main content */}
         <div className="w-[100%]">
-          <div className="mt-[64px] min-h-[calc(100vh-64px-48px)] bg-gray-50 px-[2%] py-[5%]">
+          <div className="mt-[64px] md:ml-[17rem] min-h-[calc(100vh-64px-48px)] bg-gray-50 px-[2%] py-[5%] md:py-[3%]">
             <Outlet />
           </div>
           <Footer />

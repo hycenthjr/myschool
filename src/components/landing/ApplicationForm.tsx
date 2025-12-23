@@ -1,6 +1,7 @@
 import { Upload } from "lucide-react";
 import { Label } from "../../ui/label";
 import { useForm } from "react-hook-form";
+import ArrowDown from "../../ui/ArrowDown";
 
 function ApplicationForm({ onClose }: { onClose: () => void }) {
   const {
@@ -18,7 +19,7 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
   };
 
   const baseInput =
-    "w-full bg-gray-200 border border-gray-300 rounded-md px-3 py-2 text-sm text-black outline-none focus:border-blue-500 focus:ring-blue-500";
+    "w-full bg-gray-100 border border-gray-300 rounded-md px-3 py-2 text-sm text-black outline-none focus:border-black-500 focus:ring-2 block appearance-none";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -70,15 +71,19 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
 
           <div>
             <Label htmlFor="gender">Gender *</Label>
-            <select
-              id="gender"
-              {...register("gender", { required: true })}
-              className={baseInput}
-            >
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+            <div className="relative">
+              <select
+                id="gender"
+                {...register("gender", { required: true })}
+                className={baseInput}
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+
+              <ArrowDown />
+            </div>
             {errors.gender && (
               <span className="text-red-500 text-sm">Required</span>
             )}
@@ -86,20 +91,23 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
 
           <div>
             <Label htmlFor="yearGroup">Year Group *</Label>
-            <select
-              id="yearGroup"
-              {...register("yearGroup", { required: true })}
-              // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
-              className={baseInput}
-            >
-              <option value="">Select</option>
-              <option value="nursery">Nursery</option>
-              <option value="year1">Year 1</option>
-              <option value="year2">Year 2</option>
-              <option value="year3">Year 3</option>
-              <option value="year7">Year 7</option>
-              <option value="year10">Year 10</option>
-            </select>
+            <div className="relative">
+              <select
+                id="yearGroup"
+                {...register("yearGroup", { required: true })}
+                // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
+                className={baseInput}
+              >
+                <option value="">Select</option>
+                <option value="nursery">Nursery</option>
+                <option value="year1">Year 1</option>
+                <option value="year2">Year 2</option>
+                <option value="year3">Year 3</option>
+                <option value="year7">Year 7</option>
+                <option value="year10">Year 10</option>
+              </select>
+              <ArrowDown />
+            </div>
             {errors.yearGroup && (
               <span className="text-red-500 text-sm">Required</span>
             )}
@@ -188,16 +196,19 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <Label htmlFor="boardingPreference">Boarding Preference *</Label>
-            <select
-              id="boardingPreference"
-              {...register("boardingPreference", { required: true })}
-              // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
-              className={baseInput}
-            >
-              <option value="">Select</option>
-              <option value="boarding">Boarding (Full-time)</option>
-              <option value="day">Day Student</option>
-            </select>
+            <div className="relative">
+              <select
+                id="boardingPreference"
+                {...register("boardingPreference", { required: true })}
+                // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
+                className={baseInput}
+              >
+                <option value="">Select</option>
+                <option value="boarding">Boarding (Full-time)</option>
+                <option value="day">Day Student</option>
+              </select>
+              <ArrowDown />
+            </div>
             {errors.boardingPreference && (
               <span className="text-red-500 text-sm">Required</span>
             )}
@@ -205,16 +216,19 @@ function ApplicationForm({ onClose }: { onClose: () => void }) {
 
           <div>
             <Label htmlFor="busRequired">School Bus Required? *</Label>
-            <select
-              id="busRequired"
-              {...register("busRequired", { required: true })}
-              // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
-              className={baseInput}
-            >
-              <option value="">Select</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
+            <div className="relative">
+              <select
+                id="busRequired"
+                {...register("busRequired", { required: true })}
+                // className="w-full border border-gray-300 p-2 rounded bg-white focus:border-blue-500 focus:ring-blue-500"
+                className={baseInput}
+              >
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+              <ArrowDown />
+            </div>
             {errors.busRequired && (
               <span className="text-red-500 text-sm">Required</span>
             )}
