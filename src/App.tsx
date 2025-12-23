@@ -4,18 +4,20 @@ import {
   createRoutesFromElements,
 } from "react-router";
 
+import AuthRoutes from "./routes/AuthRoute";
 import PublicRoutes from "./routes/PublicRoutes";
+import AdminRoutes from "./routes/AdminRoutes";
 import PortalRoutes from "./routes/PortalRoutes";
 import ShopRoutes from "./routes/ShopRoutes";
-import AuthRoutes from "./routes/AuthRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      {AuthRoutes}
       {PublicRoutes}
+      {AdminRoutes}
       {PortalRoutes}
       {ShopRoutes}
-      {AuthRoutes}
     </>
   )
 );

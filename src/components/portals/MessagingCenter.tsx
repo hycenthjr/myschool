@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Input } from "../../ui/input";
+import { Textarea } from "../../ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import {
   MessageSquare,
   Send,
   Search,
   Users,
   Archive,
-  Star
-} from 'lucide-react';
+  Star,
+} from "lucide-react";
 
 interface Message {
   id: string;
@@ -34,103 +34,116 @@ interface Conversation {
   role?: string;
 }
 
-export function MessagingCenter({ userRole }: { userRole?: 'parent' | 'student' | 'staff' }) {
-  const [searchTerm, setSearchTerm] = useState('');
+export function MessagingCenter({
+  userRole,
+}: {
+  userRole?: "parent" | "student" | "staff";
+}) {
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
 
   const getMessagesForRole = (): Message[] => {
-    if (userRole === 'parent') {
+    if (userRole === "parent") {
       return [
         {
-          id: '1',
-          from: 'Mr. Adebayo',
-          role: 'Mathematics Teacher',
-          subject: 'Great progress in Calculus',
-          preview: 'Chioma is doing exceptionally well in the advanced calculus unit. She has shown remarkable improvement...',
-          date: 'Oct 28, 2025',
+          id: "1",
+          from: "Mr. Adebayo",
+          role: "Mathematics Teacher",
+          subject: "Great progress in Calculus",
+          preview:
+            "Chioma is doing exceptionally well in the advanced calculus unit. She has shown remarkable improvement...",
+          date: "Oct 28, 2025",
           unread: true,
-          starred: true
+          starred: true,
         },
         {
-          id: '2',
-          from: 'School Administration',
-          role: 'Admin Office',
-          subject: 'Parent-Teacher Conference Schedule',
-          preview: 'Your scheduled appointment is on November 25th at 2:00 PM in Block A, Room 5...',
-          date: 'Oct 25, 2025',
-          unread: false
-        },
-        {
-          id: '3',
-          from: 'Coach Williams',
-          role: 'Football Coach',
-          subject: 'Inter-State Championship Update',
-          preview: 'The team performed excellently in the championship. Chioma scored the winning goal...',
-          date: 'Oct 20, 2025',
+          id: "2",
+          from: "School Administration",
+          role: "Admin Office",
+          subject: "Parent-Teacher Conference Schedule",
+          preview:
+            "Your scheduled appointment is on November 25th at 2:00 PM in Block A, Room 5...",
+          date: "Oct 25, 2025",
           unread: false,
-          starred: true
-        }
+        },
+        {
+          id: "3",
+          from: "Coach Williams",
+          role: "Football Coach",
+          subject: "Inter-State Championship Update",
+          preview:
+            "The team performed excellently in the championship. Chioma scored the winning goal...",
+          date: "Oct 20, 2025",
+          unread: false,
+          starred: true,
+        },
       ];
-    } else if (userRole === 'student') {
+    } else if (userRole === "student") {
       return [
         {
-          id: '1',
-          from: 'Dr. Okonkwo',
-          role: 'Physics Teacher',
-          subject: 'Lab Report Feedback',
-          preview: 'Your lab report on momentum was excellent. The analysis was thorough and well-documented...',
-          date: 'Oct 29, 2025',
-          unread: true
+          id: "1",
+          from: "Dr. Okonkwo",
+          role: "Physics Teacher",
+          subject: "Lab Report Feedback",
+          preview:
+            "Your lab report on momentum was excellent. The analysis was thorough and well-documented...",
+          date: "Oct 29, 2025",
+          unread: true,
         },
         {
-          id: '2',
-          from: 'Student Council',
-          role: 'Leadership',
-          subject: 'Pitch Competition - Registration Open',
-          preview: 'Registration is now open for the annual entrepreneurship pitch competition...',
-          date: 'Oct 27, 2025',
-          unread: true
+          id: "2",
+          from: "Student Council",
+          role: "Leadership",
+          subject: "Pitch Competition - Registration Open",
+          preview:
+            "Registration is now open for the annual entrepreneurship pitch competition...",
+          date: "Oct 27, 2025",
+          unread: true,
         },
         {
-          id: '3',
-          from: 'Ms. Williams',
-          role: 'English Teacher',
-          subject: 'Essay Extension Approved',
-          preview: 'Your request for an extension on the Macbeth essay has been approved. New deadline...',
-          date: 'Oct 26, 2025',
-          unread: false
-        }
+          id: "3",
+          from: "Ms. Williams",
+          role: "English Teacher",
+          subject: "Essay Extension Approved",
+          preview:
+            "Your request for an extension on the Macbeth essay has been approved. New deadline...",
+          date: "Oct 26, 2025",
+          unread: false,
+        },
       ];
     } else {
       return [
         {
-          id: '1',
-          from: 'Mrs. Okafor',
-          role: 'Parent - Chioma Okafor',
-          subject: 'Meeting Request',
-          preview: 'I would like to schedule a meeting to discuss Chioma\'s progress in mathematics...',
-          date: 'Oct 30, 2025',
-          unread: true
+          id: "1",
+          from: "Mrs. Okafor",
+          role: "Parent - Chioma Okafor",
+          subject: "Meeting Request",
+          preview:
+            "I would like to schedule a meeting to discuss Chioma's progress in mathematics...",
+          date: "Oct 30, 2025",
+          unread: true,
         },
         {
-          id: '2',
-          from: 'Head of Department',
-          role: 'HOD Mathematics',
-          subject: 'Lesson Plan Review',
-          preview: 'Your lesson plans for next week have been reviewed and approved. Great work on...',
-          date: 'Oct 28, 2025',
-          unread: false
-        },
-        {
-          id: '3',
-          from: 'Principal',
-          role: 'Administration',
-          subject: 'Staff Meeting - November 5th',
-          preview: 'This is a reminder about the upcoming staff meeting on November 5th at 3:00 PM...',
-          date: 'Oct 27, 2025',
+          id: "2",
+          from: "Head of Department",
+          role: "HOD Mathematics",
+          subject: "Lesson Plan Review",
+          preview:
+            "Your lesson plans for next week have been reviewed and approved. Great work on...",
+          date: "Oct 28, 2025",
           unread: false,
-          starred: true
-        }
+        },
+        {
+          id: "3",
+          from: "Principal",
+          role: "Administration",
+          subject: "Staff Meeting - November 5th",
+          preview:
+            "This is a reminder about the upcoming staff meeting on November 5th at 3:00 PM...",
+          date: "Oct 27, 2025",
+          unread: false,
+          starred: true,
+        },
       ];
     }
   };
@@ -139,26 +152,37 @@ export function MessagingCenter({ userRole }: { userRole?: 'parent' | 'student' 
 
   const conversations: Conversation[] = [
     {
-      id: '1',
-      participant: userRole === 'parent' ? 'Mr. Adebayo' : userRole === 'student' ? 'Dr. Okonkwo' : 'Mrs. Okafor',
-      role: userRole === 'parent' ? 'Mathematics Teacher' : userRole === 'student' ? 'Physics Teacher' : 'Parent',
-      lastMessage: 'Thank you for the update. I appreciate your feedback.',
-      timestamp: '2h ago',
-      unread: true
+      id: "1",
+      participant:
+        userRole === "parent"
+          ? "Mr. Adebayo"
+          : userRole === "student"
+          ? "Dr. Okonkwo"
+          : "Mrs. Okafor",
+      role:
+        userRole === "parent"
+          ? "Mathematics Teacher"
+          : userRole === "student"
+          ? "Physics Teacher"
+          : "Parent",
+      lastMessage: "Thank you for the update. I appreciate your feedback.",
+      timestamp: "2h ago",
+      unread: true,
     },
     {
-      id: '2',
-      participant: 'School Administration',
-      role: 'Admin Office',
-      lastMessage: 'Your request has been processed successfully.',
-      timestamp: '1d ago',
-      unread: false
-    }
+      id: "2",
+      participant: "School Administration",
+      role: "Admin Office",
+      lastMessage: "Your request has been processed successfully.",
+      timestamp: "1d ago",
+      unread: false,
+    },
   ];
 
-  const filteredMessages = messages.filter(message =>
-    message.from.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    message.subject.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredMessages = messages.filter(
+    (message) =>
+      message.from.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      message.subject.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -425,9 +449,9 @@ export function MessagingCenter({ userRole }: { userRole?: 'parent' | 'student' 
                 </div>
                 <div className="flex gap-3">
                   <Button
-                    
                     icon={<Send className="h-4 w-4" />}
-                    iconPosition="left"text="Send Message"
+                    iconPosition="left"
+                    text="Send Message"
                     className="gap-2"
                   />
 

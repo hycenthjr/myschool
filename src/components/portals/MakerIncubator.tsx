@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Progress } from '../ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Progress } from "../../ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import {
   Lightbulb,
   TrendingUp,
@@ -11,8 +11,8 @@ import {
   Package,
   BarChart3,
   Award,
-  Target
-} from 'lucide-react';
+  Target,
+} from "lucide-react";
 import {
   LineChart,
   Line,
@@ -23,13 +23,13 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
-} from 'recharts';
+  ResponsiveContainer,
+} from "recharts";
 
 interface Business {
   name: string;
   category: string;
-  status: 'active' | 'planning' | 'paused';
+  status: "active" | "planning" | "paused";
   revenue: number;
   orders: number;
   rating: number;
@@ -37,91 +37,91 @@ interface Business {
 
 export function MakerIncubator() {
   const business: Business = {
-    name: 'TechCraft Accessories',
-    category: 'Technology & Gadgets',
-    status: 'active',
+    name: "TechCraft Accessories",
+    category: "Technology & Gadgets",
+    status: "active",
     revenue: 125000,
     orders: 34,
-    rating: 4.8
+    rating: 4.8,
   };
 
   const salesData = [
-    { month: 'Jul', revenue: 15000, orders: 8 },
-    { month: 'Aug', revenue: 28000, orders: 12 },
-    { month: 'Sep', revenue: 42000, orders: 18 },
-    { month: 'Oct', revenue: 40000, orders: 14 }
+    { month: "Jul", revenue: 15000, orders: 8 },
+    { month: "Aug", revenue: 28000, orders: 12 },
+    { month: "Sep", revenue: 42000, orders: 18 },
+    { month: "Oct", revenue: 40000, orders: 14 },
   ];
 
   const topProducts = [
     {
-      name: 'Custom Phone Cases',
+      name: "Custom Phone Cases",
       sold: 12,
       revenue: 36000,
-      stock: 8
+      stock: 8,
     },
     {
-      name: 'Laptop Sleeves',
+      name: "Laptop Sleeves",
       sold: 8,
       revenue: 32000,
-      stock: 5
+      stock: 5,
     },
     {
-      name: 'Wireless Earbuds Holder',
+      name: "Wireless Earbuds Holder",
       sold: 14,
       revenue: 28000,
-      stock: 12
-    }
+      stock: 12,
+    },
   ];
 
   const recentOrders = [
     {
-      id: '#ORD-1234',
-      customer: 'Year 12 Student',
-      product: 'Custom Phone Case',
+      id: "#ORD-1234",
+      customer: "Year 12 Student",
+      product: "Custom Phone Case",
       amount: 3000,
-      status: 'completed',
-      date: 'Oct 30, 2025'
+      status: "completed",
+      date: "Oct 30, 2025",
     },
     {
-      id: '#ORD-1233',
-      customer: 'Staff Member',
-      product: 'Laptop Sleeve',
+      id: "#ORD-1233",
+      customer: "Staff Member",
+      product: "Laptop Sleeve",
       amount: 4000,
-      status: 'processing',
-      date: 'Oct 29, 2025'
+      status: "processing",
+      date: "Oct 29, 2025",
     },
     {
-      id: '#ORD-1232',
-      customer: 'Year 10 Student',
-      product: 'Earbuds Holder',
+      id: "#ORD-1232",
+      customer: "Year 10 Student",
+      product: "Earbuds Holder",
       amount: 2000,
-      status: 'completed',
-      date: 'Oct 28, 2025'
-    }
+      status: "completed",
+      date: "Oct 28, 2025",
+    },
   ];
 
   const milestones = [
-    { title: 'First Sale', completed: true, date: 'Jul 15, 2025' },
-    { title: '₦50,000 Revenue', completed: true, date: 'Aug 20, 2025' },
-    { title: '₦100,000 Revenue', completed: true, date: 'Oct 10, 2025' },
-    { title: '50 Orders', completed: false, progress: 68 },
-    { title: '5-Star Rating', completed: false, progress: 96 }
+    { title: "First Sale", completed: true, date: "Jul 15, 2025" },
+    { title: "₦50,000 Revenue", completed: true, date: "Aug 20, 2025" },
+    { title: "₦100,000 Revenue", completed: true, date: "Oct 10, 2025" },
+    { title: "50 Orders", completed: false, progress: 68 },
+    { title: "5-Star Rating", completed: false, progress: 96 },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active':
-        return 'bg-green-100 text-green-700';
-      case 'planning':
-        return 'bg-blue-100 text-blue-700';
-      case 'paused':
-        return 'bg-gray-100 text-gray-700';
-      case 'completed':
-        return 'bg-green-100 text-green-700';
-      case 'processing':
-        return 'bg-yellow-100 text-yellow-700';
+      case "active":
+        return "bg-green-100 text-green-700";
+      case "planning":
+        return "bg-blue-100 text-blue-700";
+      case "paused":
+        return "bg-gray-100 text-gray-700";
+      case "completed":
+        return "bg-green-100 text-green-700";
+      case "processing":
+        return "bg-yellow-100 text-yellow-700";
       default:
-        return 'bg-gray-100 text-gray-700';
+        return "bg-gray-100 text-gray-700";
     }
   };
 

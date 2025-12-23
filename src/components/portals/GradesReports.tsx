@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import Badge from "../ui/badge";
-import Button from "../ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Progress } from "../ui/progress";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+import { Progress } from "../../ui/progress";
 import {
   BookOpen,
   TrendingUp,
@@ -36,7 +36,6 @@ interface Subject {
 }
 
 export function GradesReports({ studentName }: { studentName?: string }) {
-
   console.log("Selected Student:", studentName);
 
   const subjects: Subject[] = [

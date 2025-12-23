@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Input } from "../../ui/input";
+import { Label } from "../../ui/label";
+import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import {
   CreditCard,
   DollarSign,
@@ -13,14 +13,14 @@ import {
   CheckCircle,
   Clock,
   AlertCircle,
-  Receipt
-} from 'lucide-react';
-import { Progress } from '../ui/progress';
+  Receipt,
+} from "lucide-react";
+import { Progress } from "../../ui/progress";
 
 interface FeeItem {
   category: string;
   amount: number;
-  status: 'paid' | 'pending' | 'overdue';
+  status: "paid" | "pending" | "overdue";
   dueDate: string;
 }
 
@@ -33,73 +33,73 @@ interface PaymentHistory {
 }
 
 export function FeePayment({ studentName }: { studentName?: string }) {
-  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [paymentMethod, setPaymentMethod] = useState("card");
   // const [selectedFees, setSelectedFees] = useState<string[]>([]);
 
   const feeBreakdown: FeeItem[] = [
     {
-      category: 'Tuition Fee',
+      category: "Tuition Fee",
       amount: 2500000,
-      status: 'paid',
-      dueDate: 'Sep 1, 2025'
+      status: "paid",
+      dueDate: "Sep 1, 2025",
     },
     {
-      category: 'Boarding Fee',
+      category: "Boarding Fee",
       amount: 800000,
-      status: 'paid',
-      dueDate: 'Sep 1, 2025'
+      status: "paid",
+      dueDate: "Sep 1, 2025",
     },
     {
-      category: 'Sports Program',
+      category: "Sports Program",
       amount: 150000,
-      status: 'paid',
-      dueDate: 'Sep 1, 2025'
+      status: "paid",
+      dueDate: "Sep 1, 2025",
     },
     {
-      category: 'Technology Fee',
+      category: "Technology Fee",
       amount: 100000,
-      status: 'paid',
-      dueDate: 'Sep 1, 2025'
+      status: "paid",
+      dueDate: "Sep 1, 2025",
     },
     {
-      category: 'Term 2 Fees',
+      category: "Term 2 Fees",
       amount: 3550000,
-      status: 'pending',
-      dueDate: 'Jan 5, 2026'
-    }
+      status: "pending",
+      dueDate: "Jan 5, 2026",
+    },
   ];
 
   const paymentHistory: PaymentHistory[] = [
     {
-      date: 'Sep 1, 2025',
-      description: 'Term 1 Fees (Full Payment)',
+      date: "Sep 1, 2025",
+      description: "Term 1 Fees (Full Payment)",
       amount: 3550000,
-      method: 'Bank Transfer',
-      reference: 'AGS-2025-001234'
+      method: "Bank Transfer",
+      reference: "AGS-2025-001234",
     },
     {
-      date: 'Jun 1, 2025',
-      description: 'Term 3 Fees - Previous Year',
+      date: "Jun 1, 2025",
+      description: "Term 3 Fees - Previous Year",
       amount: 3400000,
-      method: 'Card Payment',
-      reference: 'AGS-2025-000987'
-    }
+      method: "Card Payment",
+      reference: "AGS-2025-000987",
+    },
   ];
 
   const summary = {
     totalPaid: 3550000,
     totalPending: 3550000,
     totalAmount: 7100000,
-    percentPaid: 50
+    percentPaid: 50,
   };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'paid':
+      case "paid":
         return <Badge className="bg-green-100 text-green-700">Paid</Badge>;
-      case 'pending':
+      case "pending":
         return <Badge className="bg-yellow-100 text-yellow-700">Pending</Badge>;
-      case 'overdue':
+      case "overdue":
         return <Badge className="bg-red-100 text-red-700">Overdue</Badge>;
       default:
         return null;

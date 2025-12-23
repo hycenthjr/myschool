@@ -1,22 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
-import Button from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Button from "../../ui/button";
 // import { Badge } from "../../components/ui/badge";
 // import { Avatar, AvatarFallback } from "../../components/ui/avatar";
-import { Progress } from "../../components/ui/progress";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "../../components/ui/tabs";
+import { Progress } from "../../ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { SportsAnalytics } from "../../components/portals/SportsAnalytics";
 import { GradesReports } from "../../components/portals/GradesReports";
 import { MakerIncubator } from "../../components/portals/MakerIncubator";

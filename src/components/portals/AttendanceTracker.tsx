@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Calendar } from '../ui/calendar';
-import { 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Calendar } from "../../ui/calendar";
+import {
+  CheckCircle,
+  XCircle,
+  Clock,
   Calendar as CalendarIcon,
   TrendingUp,
-  AlertCircle 
-} from 'lucide-react';
-import { Progress } from '../ui/progress';
+  AlertCircle,
+} from "lucide-react";
+import { Progress } from "../../ui/progress";
 
 interface AttendanceRecord {
   date: string;
-  status: 'present' | 'absent' | 'late' | 'excused';
+  status: "present" | "absent" | "late" | "excused";
   checkInTime?: string;
   checkOutTime?: string;
   notes?: string;
@@ -31,10 +31,11 @@ interface AttendanceStats {
 }
 
 export function AttendanceTracker({ studentName }: { studentName?: string }) {
-
   console.log("Selected Student:", studentName);
-  
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    new Date()
+  );
 
   const stats: AttendanceStats = {
     totalDays: 80,
@@ -42,67 +43,67 @@ export function AttendanceTracker({ studentName }: { studentName?: string }) {
     absent: 2,
     late: 1,
     excused: 1,
-    percentage: 95
+    percentage: 95,
   };
 
   const recentRecords: AttendanceRecord[] = [
     {
-      date: 'Oct 31, 2025',
-      status: 'present',
-      checkInTime: '7:45 AM',
-      checkOutTime: '3:30 PM'
+      date: "Oct 31, 2025",
+      status: "present",
+      checkInTime: "7:45 AM",
+      checkOutTime: "3:30 PM",
     },
     {
-      date: 'Oct 30, 2025',
-      status: 'present',
-      checkInTime: '7:50 AM',
-      checkOutTime: '3:30 PM'
+      date: "Oct 30, 2025",
+      status: "present",
+      checkInTime: "7:50 AM",
+      checkOutTime: "3:30 PM",
     },
     {
-      date: 'Oct 29, 2025',
-      status: 'late',
-      checkInTime: '8:15 AM',
-      checkOutTime: '3:30 PM',
-      notes: 'Doctor appointment'
+      date: "Oct 29, 2025",
+      status: "late",
+      checkInTime: "8:15 AM",
+      checkOutTime: "3:30 PM",
+      notes: "Doctor appointment",
     },
     {
-      date: 'Oct 28, 2025',
-      status: 'present',
-      checkInTime: '7:40 AM',
-      checkOutTime: '3:30 PM'
+      date: "Oct 28, 2025",
+      status: "present",
+      checkInTime: "7:40 AM",
+      checkOutTime: "3:30 PM",
     },
     {
-      date: 'Oct 25, 2025',
-      status: 'excused',
-      notes: 'Representing school at Inter-State Football Championship'
-    }
+      date: "Oct 25, 2025",
+      status: "excused",
+      notes: "Representing school at Inter-State Football Championship",
+    },
   ];
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'present':
+      case "present":
         return <CheckCircle className="h-5 w-5 text-green-600" />;
-      case 'absent':
+      case "absent":
         return <XCircle className="h-5 w-5 text-red-600" />;
-      case 'late':
+      case "late":
         return <Clock className="h-5 w-5 text-orange-600" />;
-      case 'excused':
+      case "excused":
         return <CheckCircle className="h-5 w-5 text-blue-600" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'present':
-        return 'bg-green-100 text-green-700';
-      case 'absent':
-        return 'bg-red-100 text-red-700';
-      case 'late':
-        return 'bg-orange-100 text-orange-700';
-      case 'excused':
-        return 'bg-blue-100 text-blue-700';
+      case "present":
+        return "bg-green-100 text-green-700";
+      case "absent":
+        return "bg-red-100 text-red-700";
+      case "late":
+        return "bg-orange-100 text-orange-700";
+      case "excused":
+        return "bg-blue-100 text-blue-700";
       default:
-        return 'bg-gray-100 text-gray-700';
+        return "bg-gray-100 text-gray-700";
     }
   };
 

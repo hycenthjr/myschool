@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import Badge from "../ui/badge";
-import Button from "../ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
 import {
   Bus,
   MapPin,
@@ -32,7 +32,6 @@ interface Stop {
 }
 
 export function BusTracker({ routeId }: { routeId?: string }) {
-  
   console.log("Selected Route ID:", routeId);
 
   const [selectedRoute] = useState<BusRoute>({

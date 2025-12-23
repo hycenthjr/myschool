@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Progress } from '../ui/progress';
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Badge from "../../ui/badge";
+import Button from "../../ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+import { Progress } from "../../ui/progress";
 import {
   Trophy,
   Target,
@@ -10,8 +10,8 @@ import {
   Award,
   Calendar,
   Clock,
-  Activity
-} from 'lucide-react';
+  Activity,
+} from "lucide-react";
 import {
   LineChart,
   Line,
@@ -27,8 +27,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
-} from 'recharts';
+  ResponsiveContainer,
+} from "recharts";
 
 interface SportProfile {
   sport: string;
@@ -37,31 +37,30 @@ interface SportProfile {
   teamName: string;
 }
 
-export function SportsAnalytics(
-  // { studentName }: { studentName?: string }
-) {
+export function SportsAnalytics() {
+// { studentName }: { studentName?: string }
   const profile: SportProfile = {
-    sport: 'Football',
-    position: 'Midfielder',
-    level: 'Varsity',
-    teamName: 'Eagles U-17'
+    sport: "Football",
+    position: "Midfielder",
+    level: "Varsity",
+    teamName: "Eagles U-17",
   };
 
   const performanceData = [
-    { week: 'Week 1', goals: 2, assists: 3, minutes: 90 },
-    { week: 'Week 2', goals: 1, assists: 2, minutes: 90 },
-    { week: 'Week 3', goals: 3, assists: 1, minutes: 75 },
-    { week: 'Week 4', goals: 2, assists: 4, minutes: 90 },
-    { week: 'Week 5', goals: 4, assists: 2, minutes: 90 },
+    { week: "Week 1", goals: 2, assists: 3, minutes: 90 },
+    { week: "Week 2", goals: 1, assists: 2, minutes: 90 },
+    { week: "Week 3", goals: 3, assists: 1, minutes: 75 },
+    { week: "Week 4", goals: 2, assists: 4, minutes: 90 },
+    { week: "Week 5", goals: 4, assists: 2, minutes: 90 },
   ];
 
   const skillsData = [
-    { skill: 'Speed', value: 85 },
-    { skill: 'Stamina', value: 90 },
-    { skill: 'Technique', value: 88 },
-    { skill: 'Teamwork', value: 92 },
-    { skill: 'Strategy', value: 80 },
-    { skill: 'Defense', value: 75 }
+    { skill: "Speed", value: 85 },
+    { skill: "Stamina", value: 90 },
+    { skill: "Technique", value: 88 },
+    { skill: "Teamwork", value: 92 },
+    { skill: "Strategy", value: 80 },
+    { skill: "Defense", value: 75 },
   ];
 
   const stats = {
@@ -69,30 +68,38 @@ export function SportsAnalytics(
     goals: 12,
     assists: 12,
     minutesPlayed: 1260,
-    winRate: 73
+    winRate: 73,
   };
 
   const upcomingMatches = [
     {
-      opponent: 'vs. Lions Academy',
-      date: 'Nov 5, 2025',
-      time: '4:00 PM',
-      venue: 'Home Stadium',
-      competition: 'Lagos State Championship'
+      opponent: "vs. Lions Academy",
+      date: "Nov 5, 2025",
+      time: "4:00 PM",
+      venue: "Home Stadium",
+      competition: "Lagos State Championship",
     },
     {
-      opponent: 'vs. Tigers FC',
-      date: 'Nov 12, 2025',
-      time: '2:00 PM',
-      venue: 'Away',
-      competition: 'Inter-School Tournament'
-    }
+      opponent: "vs. Tigers FC",
+      date: "Nov 12, 2025",
+      time: "2:00 PM",
+      venue: "Away",
+      competition: "Inter-School Tournament",
+    },
   ];
 
   const achievements = [
-    { title: 'Top Scorer', description: 'Lagos State U-17 Tournament', date: 'Oct 2025' },
-    { title: 'MVP Award', description: 'Inter-House Sports Day', date: 'Sep 2025' },
-    { title: 'Team Captain', description: 'Eagles U-17', date: 'Aug 2025' }
+    {
+      title: "Top Scorer",
+      description: "Lagos State U-17 Tournament",
+      date: "Oct 2025",
+    },
+    {
+      title: "MVP Award",
+      description: "Inter-House Sports Day",
+      date: "Sep 2025",
+    },
+    { title: "Team Captain", description: "Eagles U-17", date: "Aug 2025" },
   ];
 
   return (

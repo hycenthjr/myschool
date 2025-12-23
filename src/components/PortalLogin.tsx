@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
-import Button from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+import Button from "../ui/button";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Alert, AlertDescription } from "./ui/alert";
+} from "../ui/card";
+import { Alert, AlertDescription } from "../ui/alert";
 import {
   Users,
   User,
@@ -212,7 +212,7 @@ export function PortalLogin() {
               </div>
 
               <Button
-              text={loading ? "Logging in..." : "Log In"}
+                text={loading ? "Logging in..." : "Log In"}
                 type="submit"
                 className={`w-full bg-gradient-to-r ${config.gradient}`}
                 disabled={loading}

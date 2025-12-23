@@ -1,20 +1,20 @@
 import { Route } from "react-router";
 import PublicLayout from "../layouts/PublicLayout";
-import { HomePage } from "../pages/HomePage";
-import { AboutPage } from "../pages/AboutPage";
-import { AcademicsPage } from "../pages/AcademicsPage";
-import { SportsPage } from "../pages/SportsPage";
-import { EntrepreneurshipPage } from "../pages/EntrepreneurshipPage";
-import { BoardingPage } from "../pages/BoardingPage";
-import { AdmissionsPage } from "../pages/AdmissionsPage";
-import { VirtualTourPage } from "../pages/VirtualTourPage";
-import { NewsEventsPage } from "../pages/NewsEventsPage";
-import { NewsDetailPage } from "../pages/NewsDetailPage";
-import { AlumniPage } from "../pages/AlumniPage";
-import { SustainabilityPage } from "../pages/SustainabilityPage";
-import { ContactPage } from "../pages/ContactPage";
-import { DiagnosticsPage } from "../pages/DiagnosticsPage";
-import { DonatePage } from "../pages/DonatePage";
+import { HomePage } from "../pages/landing/HomePage";
+import { AboutPage } from "../pages/landing/AboutPage";
+import { AcademicsPage } from "../pages/landing/AcademicsPage";
+import { SportsPage } from "../pages/landing/SportsPage";
+import { EntrepreneurshipPage } from "../pages/landing/EntrepreneurshipPage";
+import { BoardingPage } from "../pages/landing/BoardingPage";
+import { AdmissionsPage } from "../pages/landing/AdmissionsPage";
+import { VirtualTourPage } from "../pages/landing/VirtualTourPage";
+import { NewsEventsPage } from "../pages/landing/NewsEventsPage";
+import { NewsDetailPage } from "../pages/landing/NewsDetailPage";
+import { AlumniPage } from "../pages/landing/AlumniPage";
+import { SustainabilityPage } from "../pages/landing/SustainabilityPage";
+import { ContactPage } from "../pages/landing/ContactPage";
+import { DiagnosticsPage } from "../pages/landing/DiagnosticsPage";
+import { DonatePage } from "../pages/landing/DonatePage";
 
 const publicRoutes = (
   <Route path="/" element={<PublicLayout />}>

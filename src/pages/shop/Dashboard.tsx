@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Button from "../../components/ui/button";
+import Button from "../../ui/button";
 import { Home } from "lucide-react";
 
 const Dashboard = () => {

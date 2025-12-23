@@ -1,78 +1,126 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 // import Badge from '../ui/badge';
-import Button from '../ui/button';
-import { Input } from '../ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import Button from "../../ui/button";
+import { Input } from "../../ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import {
   CheckCircle,
   XCircle,
   Clock,
   Search,
   Download,
-  Calendar
-} from 'lucide-react';
+  Calendar,
+} from "lucide-react";
 
 interface Student {
   id: string;
   name: string;
-  status: 'present' | 'absent' | 'late' | null;
+  status: "present" | "absent" | "late" | null;
   checkInTime?: string;
 }
 
 export function AttendanceManagement({ className }: { className?: string }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [students, setStudents] = useState<Student[]>([
-    { id: '1', name: 'Chioma Okafor', status: 'present', checkInTime: '7:45 AM' },
-    { id: '2', name: 'Tunde Adeyemi', status: 'present', checkInTime: '7:50 AM' },
-    { id: '3', name: 'Amina Mohammed', status: 'late', checkInTime: '8:15 AM' },
-    { id: '4', name: 'James Wilson', status: null },
-    { id: '5', name: 'Fatima Ibrahim', status: 'present', checkInTime: '7:40 AM' },
-    { id: '6', name: 'David Okonkwo', status: null },
-    { id: '7', name: 'Grace Eze', status: 'present', checkInTime: '7:55 AM' },
-    { id: '8', name: 'Michael Nwosu', status: 'present', checkInTime: '7:30 AM' }
+    {
+      id: "1",
+      name: "Chioma Okafor",
+      status: "present",
+      checkInTime: "7:45 AM",
+    },
+    {
+      id: "2",
+      name: "Tunde Adeyemi",
+      status: "present",
+      checkInTime: "7:50 AM",
+    },
+    { id: "3", name: "Amina Mohammed", status: "late", checkInTime: "8:15 AM" },
+    { id: "4", name: "James Wilson", status: null },
+    {
+      id: "5",
+      name: "Fatima Ibrahim",
+      status: "present",
+      checkInTime: "7:40 AM",
+    },
+    { id: "6", name: "David Okonkwo", status: null },
+    { id: "7", name: "Grace Eze", status: "present", checkInTime: "7:55 AM" },
+    {
+      id: "8",
+      name: "Michael Nwosu",
+      status: "present",
+      checkInTime: "7:30 AM",
+    },
   ]);
 
-  const markAttendance = (studentId: string, status: 'present' | 'absent' | 'late') => {
-    setStudents(students.map(student => 
-      student.id === studentId 
-        ? { ...student, status, checkInTime: status !== 'absent' ? new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : undefined }
-        : student
-    ));
+  const markAttendance = (
+    studentId: string,
+    status: "present" | "absent" | "late"
+  ) => {
+    setStudents(
+      students.map((student) =>
+        student.id === studentId
+          ? {
+              ...student,
+              status,
+              checkInTime:
+                status !== "absent"
+                  ? new Date().toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "2-digit",
+                      hour12: true,
+                    })
+                  : undefined,
+            }
+          : student
+      )
+    );
   };
 
-  const filteredStudents = students.filter(student =>
+  const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const stats = {
     total: students.length,
-    present: students.filter(s => s.status === 'present').length,
-    absent: students.filter(s => s.status === 'absent').length,
-    late: students.filter(s => s.status === 'late').length,
-    unmarked: students.filter(s => s.status === null).length
+    present: students.filter((s) => s.status === "present").length,
+    absent: students.filter((s) => s.status === "absent").length,
+    late: students.filter((s) => s.status === "late").length,
+    unmarked: students.filter((s) => s.status === null).length,
   };
 
   const getStatusButton = (student: Student) => {
     const buttonClass = "px-3 py-1 rounded text-sm";
-    
+
     return (
       <div className="flex gap-2">
         <button
-          onClick={() => markAttendance(student.id, 'present')}
-          className={`${buttonClass} ${student.status === 'present' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-600'}`}
+          onClick={() => markAttendance(student.id, "present")}
+          className={`${buttonClass} ${
+            student.status === "present"
+              ? "bg-green-600 text-white"
+              : "bg-gray-100 text-gray-600"
+          }`}
         >
           Present
         </button>
         <button
-          onClick={() => markAttendance(student.id, 'late')}
-          className={`${buttonClass} ${student.status === 'late' ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-600'}`}
+          onClick={() => markAttendance(student.id, "late")}
+          className={`${buttonClass} ${
+            student.status === "late"
+              ? "bg-orange-600 text-white"
+              : "bg-gray-100 text-gray-600"
+          }`}
         >
           Late
         </button>
         <button
-          onClick={() => markAttendance(student.id, 'absent')}
-          className={`${buttonClass} ${student.status === 'absent' ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-600'}`}
+          onClick={() => markAttendance(student.id, "absent")}
+          className={`${buttonClass} ${
+            student.status === "absent"
+              ? "bg-red-600 text-white"
+              : "bg-gray-100 text-gray-600"
+          }`}
         >
           Absent
         </button>
